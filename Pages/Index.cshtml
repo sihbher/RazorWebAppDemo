@@ -1,0 +1,83 @@
+﻿@page
+@using System.Collections;
+@model DispatcherWebApp.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a  asp-page="Create">Create New</a>
+</p>
+@* <form>
+    <p>
+        <select asp-for="MovieGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form> *@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].IDPlant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].IDOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Dispatched)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].CreatedTimeStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].LastUpdatedTimeStamp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Order) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDPlant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dispatched)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedTimeStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdatedTimeStamp)
+                </td>
+                <td>
+                    <a asp-page="Details" asp-route-idPlant="@item.IDPlant" asp-route-idOrder="@item.IDOrder">Details</a> |
+                    <a asp-page="Edit" asp-route-idPlant="@item.IDPlant" asp-route-idOrder="@item.IDOrder">Edit</a> |
+                    <a asp-page="Delete" asp-route-idPlant="@item.IDPlant" asp-route-idOrder="@item.IDOrder">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
